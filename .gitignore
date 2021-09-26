@@ -266,3 +266,6 @@ __pycache__/
 # Azurite
 __azurite*
 __blobstorage__/
+
+# Custom
+.env
