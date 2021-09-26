@@ -21,10 +21,6 @@ EOF
 	exit 1
 fi
 
-FILE="./api/.env"
-echo "Loading from $FILE" 
-export $(egrep "^[^#;]" $FILE | xargs -n1)
-
 echo "Creating Resource Group...";
 az group create \
     -n $resourceGroup \
