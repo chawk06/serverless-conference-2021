@@ -29,6 +29,12 @@ jobs:
           region: CentralUS
           deploymentMode: Incremental   
           template: ./database/azure-sql-db-serverless.arm.json
+      - name: Deploy Database
+        uses: Azure/sql-action@v1
+        with:
+          server-name: "msfxaohkxyrfq.database.windows.net"
+          connection-string: "Server=tcp:msfxaohkxyrfq.database.windows.net,1433;Initial Catalog=todo;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;"
+          dacpac-package: "./database/build/todo.dacpac"
       - name: Build And Deploy Static Web App
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
