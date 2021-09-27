@@ -33,7 +33,7 @@ jobs:
         uses: Azure/sql-action@v1
         with:
           server-name: "msfxaohkxyrfq.database.windows.net"
-          connection-string: "Server=tcp:msfxaohkxyrfq.database.windows.net,1433;Initial Catalog=todo;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;"
+          connection-string: "Server=tcp:msfxaohkxyrfq.database.windows.net,1433;Initial Catalog=todo;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;User ID=damauri@microsoft.com;Authentication=\"Active Directory Integrated\";"
           dacpac-package: "./database/build/todo.dacpac"
       - name: Build And Deploy Static Web App
         id: builddeploy
