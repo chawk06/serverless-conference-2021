@@ -24,8 +24,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Create Database
         uses: Azure/arm-deploy@v1
-        with:
-          subscriptionId: "fa58cf66-caaf-4ba9-875d-f310d3694845"
+        with:          
           resourceGroupName: dm-serverless-2021
           region: CentralUS
           deploymentMode: Incremental   

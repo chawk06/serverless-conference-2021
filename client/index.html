@@ -147,7 +147,7 @@
 							return res.json();
 						}
 					}).then(res => {						
-						this.todos.push(res);
+						this.todos.push(res[0]);
 					})
 				},
 
