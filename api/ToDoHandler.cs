@@ -49,6 +49,9 @@ namespace api
             
             var result = await ExecuteProcedure("get", payload);    
 
+            if (result == null) 
+                return new NotFoundResult();
+
             return new OkObjectResult(result);  
         }
 
@@ -58,7 +61,9 @@ namespace api
             ILogger log)
         {
             string body = await new StreamReader(req.Body).ReadToEndAsync();
+            
             var payload = JObject.Parse(body);
+
             var result = await ExecuteProcedure("post", payload);
             
             return new OkObjectResult(result);
@@ -95,6 +100,9 @@ namespace api
             var payload = new JObject { ["id"] = id };
             
             var result = await ExecuteProcedure("delete", payload);    
+
+            if (result == null) 
+                return new NotFoundResult();
 
             return new OkObjectResult(result);  
         }

@@ -107,8 +107,14 @@ if (isjson(@payload) != 1) begin;
 	throw 50000, 'Payload is not a valid JSON document', 16;
 end;
 
-delete t from dbo.todos t 
+declare @ids table (id int not null);
+
+delete t 
+output deleted.id into @ids
+from dbo.todos t 
 where exists (select p.id from openjson(@payload) with (id int) as p where p.id = t.id)
+
+select id from @ids for json auto;
 go
 
 /*
