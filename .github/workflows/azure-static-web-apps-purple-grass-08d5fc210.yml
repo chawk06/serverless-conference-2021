@@ -25,15 +25,15 @@ jobs:
       - name: Create Database
         uses: Azure/arm-deploy@v1
         with:          
-          resourceGroupName: dm-serverless-2021
+          resourceGroupName: ${{ secrets.AZURE_RESOURCE_GROUP }}
           region: CentralUS
           deploymentMode: Incremental   
           template: ./database/azure-sql-db-serverless.arm.json
       - name: Deploy Database
         uses: Azure/sql-action@v1
         with:
-          server-name: "msfxaohkxyrfq.database.windows.net"
-          connection-string: "Server=tcp:msfxaohkxyrfq.database.windows.net,1433;Initial Catalog=todo;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;User ID=damauri@microsoft.com;Authentication=\"Active Directory Integrated\";"
+          server-name: ${{ secrets.AZURE_SQL_SERVER }} 
+          connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
           dacpac-package: "./database/build/todo.dacpac"
       - name: Build And Deploy Static Web App
         id: builddeploy
