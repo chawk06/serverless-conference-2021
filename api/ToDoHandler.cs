@@ -23,11 +23,13 @@ namespace api
     public static class ToDoHandler
     {
         static List<ToDo> _db = new List<ToDo>();
+        static int _nextId = 1;
 
         static ToDoHandler()
         {            
             _db.Add(new ToDo { Id=1, Title="Hello World!", Completed=true } );
             _db.Add(new ToDo { Id=2, Title="World, hello!", Completed=false } );
+            _nextId = 3;
         }
         
         [FunctionName("Get")]
@@ -55,6 +57,10 @@ namespace api
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             ToDo data = JsonConvert.DeserializeObject<ToDo>(requestBody);
             
+            if (data.Id == 0) {
+                data.Id = _nextId;
+                _nextId += 1;
+            }
             _db.Add(data);
             
             return new OkObjectResult(data);
