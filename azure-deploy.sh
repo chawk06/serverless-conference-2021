@@ -8,10 +8,15 @@ if [[ -f $FILE ]]; then
     export $(egrep "^[^#;]" $FILE | xargs -n1)
 else
 	cat << EOF > .env
+# Deployment details
 resourceGroup=""
 appName=""
 location=""
 
+# Connection String
+azureSQL=""
+
+# GitHub details
 gitSource="https://github.com/yorek/serverless-conference-2021"
 gitToken=""
 EOF
@@ -38,7 +43,8 @@ az deployment group create \
     repositoryUrl=$gitSource \
     branch=main \
     appLocation="./client" \
-    apiLocation="./api"
+    apiLocation="./api" \
+    azureSQL=$azureSQL
 
 echo "Getting Static Web App...";
 dhn=`az staticwebapp show -g $resourceGroup -n $appName --query "defaultHostname"`

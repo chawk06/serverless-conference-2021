@@ -22,8 +22,10 @@
         },
         "apiLocation": {
             "type": "string"
+        },
+        "azureSQL": {
+            "type": "securestring"
         }
-
     },
     "resources": [
         {
@@ -51,6 +53,7 @@
                     "type": "config",
                     "location": "[parameters('location')]",
                     "properties": {
+                        "AzureSQL": "[parameters('azureSQL')]"
                     },
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/staticSites', parameters('name'))]"
