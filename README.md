@@ -6,8 +6,8 @@ Learn how to implement a fully working, end-to-end, full-stack solution using Az
 
 ## Resources
 
-Slides: https://www.slideshare.net/davidemauri/azure-serverless-fullstack-kickstart/davidemauri/azure-serverless-fullstack-kickstart
-Recording: Coming Soon
+- Slides: https://www.slideshare.net/davidemauri/azure-serverless-fullstack-kickstart/davidemauri/azure-serverless-fullstack-kickstart
+- Recording: Coming Soon
 
 ## Sample and Repo details
 
