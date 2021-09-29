@@ -44,7 +44,7 @@ az deployment group create \
     branch=main \
     appLocation="./client" \
     apiLocation="./api" \
-    azureSQL=$azureSQL
+    azureSQL="$azureSQL"
 
 echo "Getting Static Web App...";
 dhn=`az staticwebapp show -g $resourceGroup -n $appName --query "defaultHostname"`
