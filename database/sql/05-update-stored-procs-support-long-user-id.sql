@@ -77,7 +77,7 @@ declare @ids table (id int not null);
 
 insert into dbo.todos ([todo], [completed], [owner_id])
 output inserted.id into @ids
-select [title], isnull([completed],0), @ownerId from openjson(@payload) with
+select [title], isnull([completed],0), isnull(@ownerId, 'anonymous') from openjson(@payload) with
 (
 	title nvarchar(100),
 	completed bit    
